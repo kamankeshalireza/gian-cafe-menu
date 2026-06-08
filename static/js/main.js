@@ -58,7 +58,7 @@ const menuData = {
       icon: "⏳",
       items: [
         { name: "کمکس", price: 320 },
-        { name: "V60", price: 320 },
+        { name: "V60", price: 325 },
       ],
     },
     {
