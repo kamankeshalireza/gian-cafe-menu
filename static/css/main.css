@@ -643,3 +643,212 @@ footer {
     justify-content: center;
   }
 }
+
+/* =========================================================
+   مرحله ۱ - پولیش حرفه‌ای رابط کاربری
+   ========================================================= */
+:root {
+  --page-bg: linear-gradient(135deg, #f8fcf9 0%, #f0f7f2 100%);
+  --surface: #ffffff;
+  --surface-soft: #f8fcf9;
+  --surface-hover: #f0f7f2;
+  --text: #1a3a27;
+  --text-soft: #5a7c69;
+  --border: #e0f0e5;
+  --accent: #2e8b57;
+  --accent-dark: #1a5d3a;
+  --shadow: 0 12px 30px rgba(26, 93, 58, 0.09);
+}
+
+body {
+  background: var(--page-bg);
+  color: var(--text);
+  transition: background 0.35s ease, color 0.35s ease;
+}
+
+.menu-tools {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 14px;
+  margin: 0 auto 14px;
+  max-width: 1200px;
+}
+
+.search-box {
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease;
+}
+
+.search-box:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 12px 30px rgba(46, 139, 87, .16);
+  transform: translateY(-1px);
+}
+
+.search-box > i { color: var(--accent); font-size: 1.1rem; }
+.search-box input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-weight: 600;
+}
+.search-box input::placeholder { color: var(--text-soft); }
+
+.clear-search, .tool-btn, .back-to-top {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+.clear-search {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--surface-hover);
+  color: var(--text-soft);
+}
+
+.tool-btn {
+  min-height: 56px;
+  padding: 0 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  border-radius: 18px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  font-weight: 700;
+  transition: .25s ease;
+}
+.tool-btn:hover { transform: translateY(-2px); color: var(--accent); }
+.tool-btn i { color: var(--accent); }
+
+.search-status {
+  min-height: 24px;
+  margin: 0 auto 12px;
+  max-width: 1200px;
+  color: var(--text-soft);
+  font-size: .9rem;
+  font-weight: 600;
+}
+
+.menu-item {
+  animation: menuItemIn .35s ease both;
+}
+.menu-item.search-hidden,
+.accordion-section.search-hidden { display: none !important; }
+.accordion-section.search-result-active {
+  box-shadow: 0 12px 35px rgba(46, 139, 87, .13);
+}
+
+@keyframes menuItemIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.accordion-section {
+  transition: transform .3s ease, box-shadow .3s ease, background .3s ease;
+}
+.accordion-section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(26, 93, 58, .11);
+}
+
+.back-to-top {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 1000;
+  width: 50px;
+  height: 50px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  background: var(--accent-dark);
+  color: #fff;
+  box-shadow: 0 10px 25px rgba(26, 93, 58, .25);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: .3s ease;
+}
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { transform: translateY(-3px); }
+
+/* ===== Dark Mode ===== */
+body.dark-mode {
+  --page-bg: #101713;
+  --surface: #17221c;
+  --surface-soft: #1b2a22;
+  --surface-hover: #213229;
+  --text: #eef8f1;
+  --text-soft: #b6cabc;
+  --border: #2b4435;
+  --accent: #65c98d;
+  --accent-dark: #287a4c;
+  --shadow: 0 14px 35px rgba(0, 0, 0, .25);
+  background: var(--page-bg);
+}
+
+body.dark-mode .nav-container,
+body.dark-mode .intro-box,
+body.dark-mode .accordion-section,
+body.dark-mode footer,
+body.dark-mode .search-box,
+body.dark-mode .tool-btn {
+  background: var(--surface);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+body.dark-mode .nav-btn {
+  background: var(--surface-soft);
+  color: var(--text);
+  border-color: var(--border);
+}
+body.dark-mode .nav-btn:hover { background: var(--surface-hover); }
+body.dark-mode .nav-btn.active { color: #fff; }
+body.dark-mode .accordion-header {
+  background: linear-gradient(135deg, #1a281f, #213329);
+  border-color: var(--border);
+}
+body.dark-mode .accordion-header:hover { background: #24372b; }
+body.dark-mode .section-title,
+body.dark-mode .item-name { color: var(--text); }
+body.dark-mode .item-desc,
+body.dark-mode .search-status,
+body.dark-mode footer { color: var(--text-soft); }
+body.dark-mode .section-note { background: #1b2a22; color: var(--accent); }
+body.dark-mode .menu-item { border-color: var(--border); }
+body.dark-mode .item-price { background: var(--surface-soft); color: var(--accent); border-color: var(--border); }
+body.dark-mode .menu-item:hover .item-price { background: var(--accent); color: #102016; }
+body.dark-mode .working-hours { background: rgba(101, 201, 141, .08); color: var(--accent); border-color: #39684d; }
+body.dark-mode .social-links a { background: var(--surface); color: var(--accent); border-color: var(--border); }
+body.dark-mode .contact-bar { box-shadow: 0 8px 25px rgba(0,0,0,.25); }
+
+@media (max-width: 768px) {
+  .menu-tools { grid-template-columns: 1fr; }
+  .tool-btn { width: 100%; }
+  .search-status { padding: 0 4px; }
+  .back-to-top { right: 14px; bottom: 14px; width: 46px; height: 46px; }
+}
+
+@media (max-width: 480px) {
+  .search-box { min-height: 52px; border-radius: 15px; }
+  .tool-btn { min-height: 52px; border-radius: 15px; }
+}

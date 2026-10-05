@@ -15,6 +15,10 @@
     window.STATIC_URL = "{% static '' %}";
   </script>
 
+  <!-- فایل جاوااسکریپت اصلی -->
+  
+
+
   <!-- Main CSS File -->
   <link href="{% static 'css/main.css' %}" rel="stylesheet" />
 </head>
@@ -80,8 +84,26 @@
   <!-- محتوای اصلی -->
   <main class="main-container">
     <div class="intro-box">
-      برای انتخاب بهتر از باریستا کمک بگیرید.سفارشات بیرون بر پذیرفته می‌شوند
+      برای انتخاب بهتر از باریستا کمک بگیرید. سفارشات بیرون‌بر پذیرفته می‌شوند
     </div>
+
+    <section class="menu-tools" aria-label="ابزارهای منو">
+      <div class="search-box">
+        <i class="fas fa-magnifying-glass"></i>
+        <input id="menuSearch" type="search" placeholder="جستجو در منو..." autocomplete="off" aria-label="جستجو در منو">
+        <button id="clearSearch" class="clear-search" type="button" aria-label="پاک کردن جستجو" hidden>
+          <i class="fas fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="tool-actions">
+        <button id="themeToggle" class="tool-btn" type="button" aria-label="تغییر حالت نمایش">
+          <i class="fas fa-moon"></i><span>حالت شب</span>
+        </button>
+      </div>
+    </section>
+
+    <div id="searchStatus" class="search-status" aria-live="polite"></div>
 
     <div class="accordion-container" id="accordionContainer">
       <!-- بخش‌های آکاردئون با جاوااسکریپت -->
@@ -111,6 +133,11 @@
       <p class="copyright">© 2026 designed by alireza-kamankesh</p>
     </div>
   </footer>
+
+  <button id="backToTop" class="back-to-top" type="button" aria-label="بازگشت به بالا">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
   <!-- Main JS File -->
   <script src="{% static 'js/main.js' %}"></script>
 </body>
